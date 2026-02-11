@@ -32,14 +32,14 @@ const Menu = () => {
         <p className="text-center text-xs uppercase tracking-[0.3em] text-muted-foreground">
           Cardápio
         </p>
-        <h2 className="mt-4 text-center font-serif-display text-4xl font-light md:text-5xl">
-          Il Menu
+        <h2 className="mt-4 text-center font-playfair-display text-4xl font-light md:text-5xl">
+          Menu
         </h2>
 
         <div className="mt-16 space-y-14">
           {Object.entries(menuData).map(([category, items]) => (
             <div key={category}>
-              <h3 className="font-serif-display text-2xl font-light italic text-accent">
+              <h3 className="font-playfair-display text-2xl font-light italic text-accent">
                 {category}
               </h3>
               <div className="mt-6 space-y-5">

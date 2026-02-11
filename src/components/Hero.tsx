@@ -11,11 +11,11 @@ const Hero = () => {
       />
       <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
       <div className="relative z-10 flex h-full flex-col items-center justify-end pb-24 text-center">
-        <h1 className="font-serif-display text-7xl font-light tracking-wide text-white md:text-9xl">
+        <h1 className="font-benvenuto-display text-7xl font-light tracking-wide text-white md:text-[10rem]">
           Benvenuto
         </h1>
-        <p className="mt-2 text-sm font-light uppercase tracking-[0.4em] text-white/80 md:text-base">
-          Cucina Italiana
+        <p className="mt-2 text-sm font-playfair-display uppercase tracking-[0.5em] text-white/80 md:text-base">
+          Alimentando bons momentos
         </p>
         <a
           href="https://wa.me/5500000000000"

@@ -16,13 +16,20 @@ const About = () => {
             <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground">
               Nossa História
             </p>
-            <h2 className="mt-4 font-serif-display text-4xl font-light leading-tight md:text-5xl">
+            <h2 className="mt-4 font-playfair-display text-4xl font-light leading-tight md:text-5xl">
               Tradição e<br />sabor italiano
             </h2>
             <p className="mt-6 max-w-md text-sm leading-relaxed text-muted-foreground">
-              No Benvenuto, cada prato é uma homenagem à autêntica cozinha italiana.
-              Ingredientes frescos, receitas passadas por gerações e a paixão de
-              quem cozinha com o coração fazem de cada refeição uma experiência única.
+              A história do Benvenuto nasce do legado do nonno Benvenuto, um
+              descendente de italianos que amava reunir pessoas em torno de boa
+              comida e vinho. Inspirados por suas memórias e pelas tabacarias italianas, os fundadores criaram em 2014 a Tabacaria Benvenuto, um
+              espaço acolhedor onde a comida tem alma. Apesar dos desafios ini
+              ciais, o restaurante amadureceu, consolidou seu cardápio e, após um
+              rebranding, passou a se chamar apenas Benvenuto, reforçando sua es
+              sência e clareza como restaurante. Hoje, com sua própria linha de
+              vinhos e uma estrutura moderna, o Benvenuto segue evoluindo para
+              atender as mais diversas demandas da Serra Gaúcha, sem perder o es
+              pírito de hospitalidade, afeto e boas conversas herdado do seu nonno.
             </p>
           </div>
         </div>
