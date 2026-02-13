@@ -18,8 +18,9 @@ const Contact = () => {
               <div>
                 <p className="text-sm font-medium">Endereço</p>
                 <p className="mt-1 text-sm text-muted-foreground">
-                  Rua Example, 123 — Centro<br />
-                  São Paulo, SP
+                  Rua Dante Grossi, 249,
+                  Garibaldi<br />
+                  RS
                 </p>
               </div>
             </div>
@@ -40,7 +41,7 @@ const Contact = () => {
               <div>
                 <p className="text-sm font-medium">Telefone</p>
                 <p className="mt-1 text-sm text-muted-foreground">
-                  (11) 0000-0000
+                  (54) 9674-3601
                 </p>
               </div>
             </div>
@@ -49,7 +50,7 @@ const Contact = () => {
           <div className="h-72 overflow-hidden rounded bg-muted md:h-auto">
             <iframe
               title="Localização do Benvenuto"
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.197529657!2d-46.654!3d-23.563!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2z!5e0!3m2!1spt-BR!2sbr!4v1"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3456.9022036808595!2d-51.5349504!3d-29.2551131!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x951c17e9146c5e15%3A0xc47fa6e8cacd107b!2sBenvenuto%20Restaurante!5e0!3m2!1spt-BR!2sbr!4v1710000000000"
               width="100%"
               height="100%"
               style={{ border: 0, minHeight: 288 }}

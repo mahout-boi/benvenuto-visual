@@ -1,65 +1,138 @@
-const menuData = {
-  Antipasti: [
-    { name: "Bruschetta al Pomodoro", desc: "Pão tostado com tomate fresco e manjericão", price: "R$ 28" },
-    { name: "Carpaccio di Manzo", desc: "Finas fatias de carne com rúcula e parmesão", price: "R$ 42" },
-    { name: "Burrata con Prosciutto", desc: "Burrata cremosa com presunto de Parma", price: "R$ 52" },
-  ],
-  Primi: [
-    { name: "Tagliatelle ai Funghi", desc: "Massa fresca com cogumelos porcini e trufa", price: "R$ 58" },
-    { name: "Risotto allo Zafferano", desc: "Risoto cremoso com açafrão", price: "R$ 54" },
-    { name: "Spaghetti alla Carbonara", desc: "Receita tradicional romana", price: "R$ 48" },
-  ],
-  Secondi: [
-    { name: "Branzino alla Griglia", desc: "Robalo grelhado com limão siciliano e ervas", price: "R$ 78" },
-    { name: "Ossobuco alla Milanese", desc: "Ossobuco cozido lentamente com gremolata", price: "R$ 85" },
-    { name: "Filetto al Pepe Verde", desc: "Filé mignon ao molho de pimenta verde", price: "R$ 92" },
-  ],
-  Dolci: [
-    { name: "Tiramisù", desc: "Clássico italiano com mascarpone e café", price: "R$ 32" },
-    { name: "Panna Cotta", desc: "Creme de baunilha com calda de frutas vermelhas", price: "R$ 28" },
-  ],
-  Bevande: [
-    { name: "Vinho da Casa (taça)", desc: "Tinto ou branco selecionado", price: "R$ 24" },
-    { name: "Aperol Spritz", desc: "Aperol, prosecco e água com gás", price: "R$ 32" },
-    { name: "Limoncello", desc: "Licor artesanal de limão siciliano", price: "R$ 22" },
-  ],
-};
+import { useEffect, useRef, useState } from "react";
+
+import menu1 from "@/cardapio/menu-1.jpg";
+import menu2 from "@/cardapio/menu-2.jpg";
+import menu3 from "@/cardapio/menu-3.jpg";
+import menu4 from "@/cardapio/menu-4.jpg";
+import menu5 from "@/cardapio/menu-5.jpg";
+import menu6 from "@/cardapio/menu-6.jpg";
+
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Pagination, Navigation } from "swiper/modules";
+import type { Swiper as SwiperType } from "swiper";
+
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
+
+const imagensMenu = [
+  menu1,
+  menu2,
+  menu3,
+  menu4,
+  menu5,
+  menu6,
+];
 
 const Menu = () => {
-  return (
-    <section id="cardapio" className="py-24 md:py-32">
-      <div className="mx-auto max-w-3xl px-6">
-        <p className="text-center text-xs uppercase tracking-[0.3em] text-muted-foreground">
-          Cardápio
-        </p>
-        <h2 className="mt-4 text-center font-playfair-display text-4xl font-light md:text-5xl">
-          Menu
-        </h2>
+  const [fullscreen, setFullscreen] = useState(false);
+  const [activeIndex, setActiveIndex] = useState(0);
 
-        <div className="mt-16 space-y-14">
-          {Object.entries(menuData).map(([category, items]) => (
-            <div key={category}>
-              <h3 className="font-playfair-display text-2xl font-light italic text-accent">
-                {category}
-              </h3>
-              <div className="mt-6 space-y-5">
-                {items.map((item) => (
-                  <div key={item.name} className="flex items-baseline justify-between gap-4">
-                    <div className="min-w-0">
-                      <p className="text-sm font-medium">{item.name}</p>
-                      <p className="mt-0.5 text-xs text-muted-foreground">{item.desc}</p>
-                    </div>
-                    <span className="shrink-0 text-sm font-light text-muted-foreground">
-                      {item.price}
-                    </span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          ))}
+  const swiperNormalRef = useRef<SwiperType | null>(null);
+
+  // Bloqueia scroll do body no fullscreen
+  useEffect(() => {
+    document.body.style.overflow = fullscreen ? "hidden" : "auto";
+  }, [fullscreen]);
+
+  return (
+    <>
+      {/* ================= TELA CHEIA ================= */}
+      {fullscreen && (
+        <div className="fixed inset-0 z-50 bg-black">
+
+          {/* FECHAR */}
+          <button
+            onClick={() => setFullscreen(false)}
+            className="absolute top-6 right-6 z-[9999]
+                       rounded-full border border-white/40
+                       px-4 py-2 text-sm text-white
+                       backdrop-blur-md
+                       hover:bg-white hover:text-black transition"
+          >
+            Fechar ✕
+          </button>
+
+          {/* CONTADOR */}
+          <div className="absolute top-6 left-6 z-[9999]
+                          rounded-full bg-black/60
+                          px-4 py-2 text-sm text-white
+                          backdrop-blur-md">
+            {activeIndex + 1} / {imagensMenu.length}
+          </div>
+
+          <Swiper
+            modules={[Pagination, Navigation]}
+            navigation
+            pagination={{ clickable: true }}
+            slidesPerView={1}
+            loop
+            initialSlide={activeIndex}
+            speed={600}
+            onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
+            className="h-full w-full"
+          >
+            {imagensMenu.map((img, index) => (
+              <SwiperSlide key={index}>
+                <img
+                  src={img}
+                  alt={`Cardápio página ${index + 1}`}
+                  className="mx-auto h-full w-full object-contain"
+                />
+              </SwiperSlide>
+            ))}
+          </Swiper>
         </div>
-      </div>
-    </section>
+      )}
+
+      {/* ================= CARDÁPIO NORMAL ================= */}
+      <section id="cardapio" className="py-24 md:py-32">
+        <div className="mx-auto max-w-6xl px-6">
+          <p className="text-center text-xs uppercase tracking-[0.3em] text-muted-foreground">
+            Cardápio
+          </p>
+
+          <h2 className="mt-4 text-center font-playfair-display text-4xl font-light md:text-5xl">
+            Menu
+          </h2>
+
+          {/* CONTADOR NORMAL */}
+          <div className="mt-6 text-center text-sm text-muted-foreground">
+            {activeIndex + 1} / {imagensMenu.length}
+          </div>
+
+          <Swiper
+            modules={[Pagination, Navigation]}
+            navigation
+            pagination={{ clickable: true }}
+            spaceBetween={32}
+            slidesPerView={1}
+            loop
+            speed={600}
+            onSwiper={(swiper) => (swiperNormalRef.current = swiper)}
+            onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
+            className="mt-10"
+          >
+            {imagensMenu.map((img, index) => (
+              <SwiperSlide key={index}>
+                <img
+                  src={img}
+                  alt={`Cardápio página ${index + 1}`}
+                  onClick={() => {
+                    setActiveIndex(index);
+                    setFullscreen(true);
+                  }}
+                  className="mx-auto h-[70vh] w-full cursor-pointer
+                            rounded-xl object-contain shadow-lg
+                            transition-transform duration-300
+                            hover:scale-[1.03]"
+                />
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
+      </section>
+    </>
   );
 };
 
