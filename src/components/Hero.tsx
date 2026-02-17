@@ -27,6 +27,9 @@ const Hero = () => {
           Reservar Mesa
         </a>
       </div>
+      <div id = 'scroll-indicator' className="absolute bottom-4 left-1/2 -translate-x-1/2 animate-bounce rounded-full border-2 border-white/80 p-2">
+        
+      </div>
     </section>
   );
 };

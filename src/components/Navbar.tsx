@@ -7,7 +7,6 @@ type NavbarProps = {
 const navLinks = [
   { id: "home", label: "Início" },
   { id: "eventos", label: "Eventos" },
-  { id: "sobre", label: "Sobre" },
   { id: "galeria", label: "Galeria" },
   { id: "cardapio", label: "Cardápio" },
   { id: "contato", label: "Contato" },
