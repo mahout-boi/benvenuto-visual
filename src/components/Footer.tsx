@@ -1,4 +1,4 @@
-import { Instagram, Facebook } from "lucide-react";
+import {Instagram} from "lucide-react";
 
 const Footer = () => {
   return (
@@ -7,18 +7,12 @@ const Footer = () => {
         <p className="font-serif-display text-2xl font-light">Benvenuto</p>
         <div className="mt-4 flex justify-center gap-4">
           <a
-            href="#"
+            href="https://www.instagram.com/restaurantebenvenuto?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
             aria-label="Instagram"
+            target="_blank"
             className="text-muted-foreground transition-colors hover:text-foreground"
           >
             <Instagram size={20} />
-          </a>
-          <a
-            href="#"
-            aria-label="Facebook"
-            className="text-muted-foreground transition-colors hover:text-foreground"
-          >
-            <Facebook size={20} />
           </a>
         </div>
         <p className="mt-6 text-xs text-muted-foreground">
