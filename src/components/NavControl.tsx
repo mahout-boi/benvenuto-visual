@@ -6,7 +6,6 @@ import Gallery from "@/components/Gallery";
 import Menu from "@/components/Menu";
 import Contact from "@/components/Contact";
 import Eventos from "@/components/Eventos";
-import Footer from "@/components/Footer";
 function NavControl() {
     const [abaAtiva, setAbaAtiva] = useState("home");
 
@@ -16,6 +15,7 @@ function NavControl() {
             <div className={abaAtiva === "home" ? "block" : "hidden"}>
                 <Hero />
                 <About />
+                <Menu />
                 <Contact />
             </div>
 
