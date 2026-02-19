@@ -16,7 +16,10 @@ const Contact = () => {
   const [open, setOpen] = useState(false);
 
   return (
-    <section id="contato" className="bg-secondary py-24 md:py-32">
+    <section
+      id="contato"
+      className="bg-[#e6ddcf] py-24 md:py-32 text-foreground"
+    >
       <div className="mx-auto max-w-6xl px-6">
         <p className="text-center text-xs uppercase tracking-[0.3em] text-muted-foreground">
           Contato

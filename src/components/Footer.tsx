@@ -1,21 +1,25 @@
-import {Instagram} from "lucide-react";
+import { Instagram } from "lucide-react";
 
 const Footer = () => {
   return (
-    <footer className="border-t py-12">
+    <footer className="border-t border-muted bg-neutral-100 py-16">
       <div className="mx-auto max-w-6xl px-6 text-center">
-        <p className="font-serif-display text-2xl font-light">Benvenuto</p>
-        <div className="mt-4 flex justify-center gap-4">
+        <p className="font-serif-display text-3xl font-light tracking-wide">
+          Benvenuto
+        </p>
+
+        <div className="mt-6 flex justify-center">
           <a
-            href="https://www.instagram.com/restaurantebenvenuto?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+            href="https://www.instagram.com/restaurantebenvenuto"
             aria-label="Instagram"
             target="_blank"
-            className="text-muted-foreground transition-colors hover:text-foreground"
+            className="flex h-10 w-10 items-center justify-center rounded-full border text-muted-foreground transition-all hover:scale-110 hover:text-foreground hover:border-foreground"
           >
-            <Instagram size={20} />
+            <Instagram size={18} />
           </a>
         </div>
-        <p className="mt-6 text-xs text-muted-foreground">
+
+        <p className="mt-8 text-xs text-muted-foreground">
           © {new Date().getFullYear()} Benvenuto. Todos os direitos reservados.
         </p>
       </div>

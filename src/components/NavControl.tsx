@@ -6,24 +6,36 @@ import Gallery from "@/components/Gallery";
 import Menu from "@/components/Menu";
 import Contact from "@/components/Contact";
 import Eventos from "@/components/Eventos";
-
+import Footer from "@/components/Footer";
 function NavControl() {
     const [abaAtiva, setAbaAtiva] = useState("home");
 
     return (
         <>
-            <Navbar setAbaAtiva={setAbaAtiva} />
-            {abaAtiva === "home" && <Hero />}
-            {abaAtiva !== "home" && (
-                <div className="pt-24">
-                    {abaAtiva === "eventos" && <Eventos />}
-                    {abaAtiva === "sobre" && <About />}
-                    {abaAtiva === "galeria" && <Gallery />}
-                    {abaAtiva === "cardapio" && <Menu />}
-                    {abaAtiva === "contato" && <Contact />}
-                </div>
-            )}
+            <Navbar abaAtiva={abaAtiva} setAbaAtiva={setAbaAtiva} />
+            <div className={abaAtiva === "home" ? "block" : "hidden"}>
+                <Hero />
+                <About />
+                <Contact />
+            </div>
+
+            <div className={abaAtiva === "eventos" ? "block pt-24" : "hidden"}>
+                <Eventos />
+            </div>
+
+            <div className={abaAtiva === "galeria" ? "block pt-24" : "hidden"}>
+                <Gallery />
+            </div>
+
+            <div className={abaAtiva === "cardapio" ? "block pt-24" : "hidden"}>
+                <Menu />
+            </div>
+
+            <div className={abaAtiva === "contato" ? "block pt-24" : "hidden"}>
+                <Contact />
+            </div>
         </>
     );
-};
+}
+
 export default NavControl;

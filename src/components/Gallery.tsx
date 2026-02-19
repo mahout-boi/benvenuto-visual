@@ -1,18 +1,5 @@
 import { useState } from "react";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
-import dish1 from "@/assets/dish-1.jpg";
-import dish2 from "@/assets/dish-2.jpg";
-import dish3 from "@/assets/dish-3.jpg";
-import dish4 from "@/assets/dish-4.jpg";
-import dish5 from "@/assets/dish-5.jpg";
-
-const dishes = [
-  { src: dish1, name: "Tagliatelle ai Funghi" },
-  { src: dish2, name: "Tiramisù" },
-  { src: dish3, name: "Bruschetta Classica" },
-  { src: dish4, name: "Risotto allo Zafferano" },
-  { src: dish5, name: "Branzino alla Griglia" },
-];
 
 const Gallery = () => {
   const [selected, setSelected] = useState<number | null>(null);
@@ -27,7 +14,7 @@ const Gallery = () => {
           Nossos Pratos
         </h2>
 
-        <div className="mt-16 grid grid-cols-2 gap-3 md:grid-cols-3 md:gap-4">
+        {/* <div className="mt-16 grid grid-cols-2 gap-3 md:grid-cols-3 md:gap-4">
           {dishes.map((dish, i) => (
             <button
               key={i}
@@ -47,16 +34,16 @@ const Gallery = () => {
               </div>
             </button>
           ))}
-        </div>
+        </div> */}
       </div>
 
       <Dialog open={selected !== null} onOpenChange={() => setSelected(null)}>
         <DialogContent className="max-w-3xl border-none bg-transparent p-0 shadow-none">
           {selected !== null && (
             <img
-              src={dishes[selected].src}
-              alt={dishes[selected].name}
-              className="h-auto w-full rounded"
+            //   src={dishes[selected].src}
+            //   alt={dishes[selected].name}
+            //   className="h-auto w-full rounded"
             />
           )}
         </DialogContent>

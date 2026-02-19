@@ -1,4 +1,6 @@
 import aboutImg from "@/assets/benvenuto-restaurante.jpg";
+import pratoImg from "@/assets/prato-1.jpg";
+import mesaImg from "@/assets/mesa-1.jpg";
 
 const About = () => {
   return (
@@ -36,14 +38,19 @@ const About = () => {
           <div className="overflow-hidden">
             <img
               src={aboutImg}
-              alt="Chef preparando massa fresca no Benvenuto"
               className="h-[500px] w-full object-cover"
             />
           </div>
 
-          {/* POR QUE ESCOLHER */}
+          <div className="overflow-hidden">
+            <img
+              src={pratoImg}
+              className="h-[500px] w-full object-cover"
+            />
+          </div>
+
           <div className="md:col-start-2 mt-6">
-            <p className="mt-4 font-playfair-display text-4xl font-light leading-tight md:text-5xl">
+            <p className="mt-4 font-playfair-display text-3xl font-light leading-tight md:text-4xl">
               Porque escolher o Benvenuto?
             </p>
 
@@ -52,17 +59,17 @@ const About = () => {
               Onde cada detalhe é pensado com carinho, tempo e presença, porque
               sabemos que momentos especiais não se repetem. Eles ficam na
               memória.
-              <br /><br />
+              <br />
               Aqui, cada celebração tem a sua própria história. Escutamos,
               acolhemos e transformamos sentimentos em experiências, com boa
               comida, vinhos que acompanham a conversa e um ambiente que convida
               a ficar.
-              <br /><br />
+              <br />
               O Benvenuto é o cenário para aniversários sem pressa, casamentos
               cheios de afeto, encontros a dois e reuniões de quem gosta de estar
               junto. Nossa equipe cuida de tudo para que você possa aproveitar o
               que realmente importa.
-              <br /><br />
+              <br />
               Mais do que um restaurante, somos um espaço para celebrar
               histórias, criar memórias e brindar momentos que ficam
             </p>
@@ -83,6 +90,13 @@ const About = () => {
               feição uma oportunidade para <br />
               criar memórias inesquecíveis
             </p>
+          </div>
+
+          <div className="overflow-hidden">
+            <img
+              src={mesaImg}
+              className="h-[500px] w-full object-cover"
+            />
           </div>
 
         </div>
