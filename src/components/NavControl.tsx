@@ -8,7 +8,6 @@ import Contact from "@/components/Contact";
 import Eventos from "@/components/Eventos";
 function NavControl() {
     const [abaAtiva, setAbaAtiva] = useState("home");
-
     return (
         <>
             <Navbar abaAtiva={abaAtiva} setAbaAtiva={setAbaAtiva} />
@@ -37,5 +36,4 @@ function NavControl() {
         </>
     );
 }
-
 export default NavControl;
