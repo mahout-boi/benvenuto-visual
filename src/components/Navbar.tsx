@@ -11,17 +11,91 @@ const navLinks = [
   { id: "eventos", label: "Eventos" },
   { id: "galeria", label: "Galeria" },
   { id: "cardapio", label: "Cardápio" },
-  { id: "contato", label: "Contato" },
 ];
 
+// ====== HORÁRIOS ======
+const horarios = [
+  { dia: "Segunda-feira", periodos: ["18:30–22:00"] },
+  { dia: "Terça-feira", periodos: ["11:30–13:15", "19:00–22:00"] },
+  { dia: "Quarta-feira", periodos: ["11:30–13:15", "19:00–22:00"] },
+  { dia: "Quinta-feira", periodos: ["11:30–13:15", "19:00–22:00"] },
+  { dia: "Sexta-feira", periodos: ["11:30–13:15", "19:00–22:00"] },
+  { dia: "Sábado", periodos: ["11:30–14:00", "19:00–22:00"] },
+  { dia: "Domingo", periodos: ["11:30–14:00"] },
+];
+
+const feriados = ["01/01", "21/04", "25/12"];
+
+const diaSemana = ["Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "Sáb"];
+
+const diasMap: Record<string, string> = {
+  Dom: "Domingo",
+  Seg: "Segunda-feira",
+  Ter: "Terça-feira",
+  Qua: "Quarta-feira",
+  Qui: "Quinta-feira",
+  Sex: "Sexta-feira",
+  Sáb: "Sábado",
+};
+
+function toMin(hora: string) {
+  const [h, m] = hora.split(":").map(Number);
+  return h * 60 + m;
+}
+
+function verificarStatus() {
+  const agora = new Date();
+
+  const minutosAtuais = agora.getHours() * 60 + agora.getMinutes();
+  const diaAtual = diasMap[diaSemana[agora.getDay()]];
+
+  const data = agora.toLocaleDateString("pt-BR", {
+    timeZone: "America/Sao_Paulo",
+  });
+  const [dia, mes] = data.split("/");
+
+  if (feriados.includes(`${dia}/${mes}`)) {
+    return { texto: "Fechado (Feriado)", aberto: false };
+  }
+
+  const diaHorario = horarios.find(h => h.dia === diaAtual);
+  if (!diaHorario) return { texto: "Fechado", aberto: false };
+
+  for (const periodo of diaHorario.periodos) {
+    const [inicio, fim] = periodo.split("–");
+    const ini = toMin(inicio);
+    const fimMin = toMin(fim);
+
+    if (minutosAtuais >= ini && minutosAtuais <= fimMin) {
+      return { texto: "Aberto agora", aberto: true };
+    }
+
+    if (minutosAtuais < ini) {
+      return { texto: `Abre às ${inicio}`, aberto: false };
+    }
+  }
+
+  return { texto: "Fechado", aberto: false };
+}
+
+// ====== COMPONENTE ======
 const Navbar = ({ setAbaAtiva, abaAtiva }: NavbarProps) => {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [status, setStatus] = useState(verificarStatus());
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
     window.addEventListener("scroll", onScroll);
-    return () => window.removeEventListener("scroll", onScroll);
+
+    const interval = setInterval(() => {
+      setStatus(verificarStatus());
+    }, 1000);
+
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      clearInterval(interval);
+    };
   }, []);
 
   const handleNav = (id: string) => {
@@ -40,21 +114,33 @@ const Navbar = ({ setAbaAtiva, abaAtiva }: NavbarProps) => {
         }`}
       >
         <div className="mx-auto flex max-w-6xl items-center justify-between px-6">
-          {/* Logo */}
-          <button
-            onClick={() => handleNav("home")}
-            className="font-serif-display text-xl font-light text-foreground transition-opacity hover:opacity-70"
-          >
-            Benvenuto
-          </button>
+          {/* Logo + Status */}
+          <div className="flex items-center gap-2">
+            <button
+              onClick={() => handleNav("home")}
+              className="font-serif-display text-xl font-light text-foreground hover:opacity-70"
+            >
+              Benvenuto
+            </button>
 
-          {/* Desktop Links */}
-          <div className="hidden items-center gap-8 md:flex">
-            {navLinks.map((link) => (
+            <span className="opacity-50">·</span>
+
+            <span
+              className={`font-serif-display text-xl font-light ${
+                status.aberto ? "text-green-600" : "text-red-600"
+              }`}
+            >
+              {status.texto}
+            </span>
+          </div>
+
+          {/* Desktop */}
+          <div className="hidden gap-8 md:flex">
+            {navLinks.map(link => (
               <button
                 key={link.id}
                 onClick={() => handleNav(link.id)}
-                className={`relative text-xs uppercase tracking-[0.2em] transition-colors ${
+                className={`relative text-xs uppercase tracking-[0.2em] ${
                   abaAtiva === link.id
                     ? "text-foreground"
                     : "text-muted-foreground hover:text-foreground"
@@ -68,37 +154,16 @@ const Navbar = ({ setAbaAtiva, abaAtiva }: NavbarProps) => {
             ))}
           </div>
 
-          {/* Mobile Hamburger */}
+          {/* Mobile */}
           <button
-            className="flex h-9 w-9 items-center justify-center rounded-md text-muted-foreground transition-colors hover:text-foreground md:hidden"
-            onClick={() => setMenuOpen((v) => !v)}
+            className="md:hidden"
+            onClick={() => setMenuOpen(v => !v)}
             aria-label="Menu"
           >
             {menuOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
         </div>
       </nav>
-
-      {/* Mobile Drawer */}
-      {menuOpen && (
-        <div className="fixed inset-0 z-30 bg-background/95 backdrop-blur-md md:hidden">
-          <div className="flex h-full flex-col items-center justify-center gap-10">
-            {navLinks.map((link) => (
-              <button
-                key={link.id}
-                onClick={() => handleNav(link.id)}
-                className={`font-playfair-display text-3xl font-light transition-colors ${
-                  abaAtiva === link.id
-                    ? "text-foreground"
-                    : "text-muted-foreground hover:text-foreground"
-                }`}
-              >
-                {link.label}
-              </button>
-            ))}
-          </div>
-        </div>
-      )}
     </>
   );
 };

@@ -6,6 +6,7 @@ import Gallery from "@/components/Gallery";
 import Menu from "@/components/Menu";
 import Contact from "@/components/Contact";
 import Eventos from "@/components/Eventos";
+
 function NavControl() {
     const [abaAtiva, setAbaAtiva] = useState("home");
     return (
