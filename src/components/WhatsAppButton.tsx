@@ -7,10 +7,10 @@ const WhatsAppButton = () => {
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Fale conosco pelo WhatsApp"
-      className="fixed bottom-6 right-6 z-50 flex h-13 w-13 items-center justify-center rounded-full shadow-lg transition-transform duration-200 hover:scale-110 active:scale-95"
-      style={{ background: "hsl(142 70% 45%)", color: "white", height: "52px", width: "52px" }}
+      className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 flex items-center justify-center rounded-full shadow-lg transition-transform duration-200 hover:scale-110 active:scale-95"
+      style={{ background: "hsl(142 70% 45%)", color: "white", height: "46px", width: "46px" }}
     >
-      <MessageCircle size={22} />
+      <MessageCircle size={20} />
     </a>
   );
 };
