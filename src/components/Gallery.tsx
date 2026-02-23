@@ -34,17 +34,22 @@ const Gallery = () => {
   const header = useInView();
   const grid = useInView(0.05);
 
-  // Close on Escape
   useEffect(() => {
     const handler = (e: KeyboardEvent) => { if (e.key === "Escape") setSelected(null); };
     window.addEventListener("keydown", handler);
     return () => window.removeEventListener("keydown", handler);
   }, []);
 
+  // Prevent body scroll when lightbox open
+  useEffect(() => {
+    document.body.style.overflow = selected !== null ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
+  }, [selected]);
+
   return (
     <>
-      <section id="galeria" className="bg-secondary/40 py-24 md:py-32">
-        <div className="mx-auto max-w-6xl px-6">
+      <section id="galeria" className="bg-secondary/40 py-16 sm:py-24 md:py-32">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6">
 
           {/* Header */}
           <div
@@ -54,20 +59,20 @@ const Gallery = () => {
             <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground">
               Galeria
             </p>
-            <h2 className="mt-4 font-playfair-display text-4xl font-light md:text-5xl">
+            <h2 className="mt-3 sm:mt-4 font-playfair-display text-3xl sm:text-4xl md:text-5xl font-light">
               Nossos Momentos
             </h2>
-            <div className="mt-6 h-px w-12 bg-accent mx-auto" />
+            <div className="mt-4 sm:mt-6 h-px w-12 bg-accent mx-auto" />
           </div>
 
-          {/* Grid */}
+          {/* Grid — 1 col mobile, 2 col sm, 4 col md+ */}
           <div
             ref={grid.ref}
-            className={`mt-14 grid grid-cols-2 gap-4 md:grid-cols-4 md:gap-5 transition-all duration-700 delay-150 ease-out ${grid.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+            className={`mt-10 sm:mt-14 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 md:gap-5 transition-all duration-700 delay-150 ease-out ${grid.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
           >
             {/* Large first item */}
             <div
-              className="col-span-2 row-span-2 cursor-pointer overflow-hidden rounded-sm group"
+              className="sm:col-span-2 sm:row-span-2 cursor-pointer overflow-hidden rounded-sm group"
               onClick={() => setSelected(0)}
             >
               <img
@@ -75,7 +80,7 @@ const Gallery = () => {
                 alt={images[0].label}
                 loading="lazy"
                 className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
-                style={{ minHeight: "340px" }}
+                style={{ minHeight: "240px" }}
               />
             </div>
 
@@ -108,22 +113,22 @@ const Gallery = () => {
       {/* Lightbox */}
       {selected !== null && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-sm"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-sm p-4"
           onClick={() => setSelected(null)}
         >
           <button
             onClick={() => setSelected(null)}
-            className="absolute right-5 top-5 flex h-9 w-9 items-center justify-center rounded-full border border-white/30 text-white transition hover:bg-white/10"
+            className="absolute right-3 top-3 sm:right-5 sm:top-5 flex h-9 w-9 items-center justify-center rounded-full border border-white/30 text-white transition hover:bg-white/10"
           >
             <X size={16} />
           </button>
           <img
             src={images[selected].src}
             alt={images[selected].label}
-            className="max-h-[90vh] max-w-[90vw] rounded-sm object-contain shadow-2xl"
+            className="max-h-[85vh] max-w-full sm:max-w-[90vw] rounded-sm object-contain shadow-2xl"
             onClick={(e) => e.stopPropagation()}
           />
-          <p className="absolute bottom-6 left-1/2 -translate-x-1/2 text-xs uppercase tracking-[0.3em] text-white/60">
+          <p className="absolute bottom-4 sm:bottom-6 left-1/2 -translate-x-1/2 text-[10px] sm:text-xs uppercase tracking-[0.3em] text-white/60">
             {images[selected].label}
           </p>
         </div>

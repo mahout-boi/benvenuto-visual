@@ -28,30 +28,30 @@ const About = () => {
   const row3 = useInView(0.1);
 
   return (
-    <section id="sobre" className="py-24 md:py-32">
-      <div className="mx-auto max-w-6xl px-6">
+    <section id="sobre" className="py-16 sm:py-24 md:py-32">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6">
 
         {/* ROW 1 — Texto + Imagem */}
         <div
           ref={row1.ref}
-          className={`grid items-center gap-12 md:grid-cols-2 md:gap-20 ${fadeUp} ${row1.visible ? fadeIn : ""}`}
+          className={`grid items-center gap-8 sm:gap-12 md:grid-cols-2 md:gap-20 ${fadeUp} ${row1.visible ? fadeIn : ""}`}
         >
           <div>
             <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground">
               Nossa História
             </p>
-            <h2 className="mt-4 font-playfair-display text-4xl font-light leading-snug md:text-5xl">
-              Tradição e <br /> sabor italiano
+            <h2 className="mt-3 sm:mt-4 font-playfair-display text-3xl sm:text-4xl md:text-5xl font-light leading-snug">
+              Tradição e <br className="hidden sm:block" /> sabor italiano
             </h2>
-            <div className="mt-6 h-px w-10 bg-accent" />
-            <p className="mt-6 text-sm leading-[1.9] text-muted-foreground">
+            <div className="mt-4 sm:mt-6 h-px w-10 bg-accent" />
+            <p className="mt-4 sm:mt-6 text-sm leading-[1.9] text-muted-foreground">
               A história do Benvenuto nasce do legado do nonno Benvenuto, um
               descendente de italianos que amava reunir pessoas em torno de boa
               comida e vinho. Inspirados por suas memórias e pelas tabacarias
               italianas, os fundadores criaram em 2014 a Tabacaria Benvenuto —
               um espaço acolhedor onde a comida tem alma.
             </p>
-            <p className="mt-4 text-sm leading-[1.9] text-muted-foreground">
+            <p className="mt-3 sm:mt-4 text-sm leading-[1.9] text-muted-foreground">
               Após um rebranding, passou a se chamar apenas Benvenuto,
               reforçando sua essência como restaurante. Hoje, com sua própria
               linha de vinhos e estrutura moderna, o Benvenuto segue evoluindo
@@ -60,12 +60,12 @@ const About = () => {
           </div>
 
           <div className="relative">
-            <div className="absolute -inset-3 border border-accent/20 rounded-sm pointer-events-none" />
+            <div className="absolute -inset-3 border border-accent/20 rounded-sm pointer-events-none hidden sm:block" />
             <div className="overflow-hidden rounded-sm">
               <img
                 src={aboutImg}
                 alt="Ambiente do restaurante Benvenuto"
-                className="h-[460px] w-full object-cover transition-transform duration-700 hover:scale-[1.04]"
+                className="h-[280px] sm:h-[360px] md:h-[460px] w-full object-cover transition-transform duration-700 hover:scale-[1.04]"
                 loading="lazy"
               />
             </div>
@@ -73,24 +73,24 @@ const About = () => {
         </div>
 
         {/* DIVIDER */}
-        <div className="my-24 flex items-center gap-6">
+        <div className="my-14 sm:my-20 md:my-24 flex items-center gap-4 sm:gap-6">
           <div className="h-px flex-1 bg-border" />
-          <span className="font-playfair-display text-xl text-muted-foreground/50">✦</span>
+          <span className="font-playfair-display text-lg sm:text-xl text-muted-foreground/50">✦</span>
           <div className="h-px flex-1 bg-border" />
         </div>
 
         {/* ROW 2 — Imagem + Texto */}
         <div
           ref={row2.ref}
-          className={`grid items-center gap-12 md:grid-cols-2 md:gap-20 ${fadeUp} ${row2.visible ? fadeIn : ""}`}
+          className={`grid items-center gap-8 sm:gap-12 md:grid-cols-2 md:gap-20 ${fadeUp} ${row2.visible ? fadeIn : ""}`}
         >
           <div className="order-2 md:order-1 relative">
-            <div className="absolute -inset-3 border border-accent/20 rounded-sm pointer-events-none" />
+            <div className="absolute -inset-3 border border-accent/20 rounded-sm pointer-events-none hidden sm:block" />
             <div className="overflow-hidden rounded-sm">
               <img
                 src={pratoImg}
                 alt="Prato típico do Benvenuto"
-                className="h-[460px] w-full object-cover transition-transform duration-700 hover:scale-[1.04]"
+                className="h-[280px] sm:h-[360px] md:h-[460px] w-full object-cover transition-transform duration-700 hover:scale-[1.04]"
                 loading="lazy"
               />
             </div>
@@ -100,16 +100,16 @@ const About = () => {
             <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground">
               Por que nos escolher
             </p>
-            <h3 className="mt-4 font-playfair-display text-3xl font-light leading-snug md:text-4xl">
-              Onde cada detalhe <br /> é uma memória
+            <h3 className="mt-3 sm:mt-4 font-playfair-display text-2xl sm:text-3xl md:text-4xl font-light leading-snug">
+              Onde cada detalhe <br className="hidden sm:block" /> é uma memória
             </h3>
-            <div className="mt-6 h-px w-10 bg-accent" />
-            <p className="mt-6 text-sm leading-[1.9] text-muted-foreground">
+            <div className="mt-4 sm:mt-6 h-px w-10 bg-accent" />
+            <p className="mt-4 sm:mt-6 text-sm leading-[1.9] text-muted-foreground">
               Escolher o Benvenuto é escolher um lugar onde as pessoas importam.
               Onde cada detalhe é pensado com carinho, tempo e presença — porque
               sabemos que momentos especiais não se repetem.
             </p>
-            <p className="mt-4 text-sm leading-[1.9] text-muted-foreground">
+            <p className="mt-3 sm:mt-4 text-sm leading-[1.9] text-muted-foreground">
               Aqui, cada celebração tem a sua própria história. Escutamos,
               acolhemos e transformamos sentimentos em experiências, com boa
               comida, vinhos que acompanham a conversa e um ambiente que convida
@@ -119,26 +119,26 @@ const About = () => {
         </div>
 
         {/* DIVIDER */}
-        <div className="my-24 flex items-center gap-6">
+        <div className="my-14 sm:my-20 md:my-24 flex items-center gap-4 sm:gap-6">
           <div className="h-px flex-1 bg-border" />
-          <span className="font-playfair-display text-xl text-muted-foreground/50">✦</span>
+          <span className="font-playfair-display text-lg sm:text-xl text-muted-foreground/50">✦</span>
           <div className="h-px flex-1 bg-border" />
         </div>
 
         {/* ROW 3 — Texto + Imagem */}
         <div
           ref={row3.ref}
-          className={`grid items-center gap-12 md:grid-cols-2 md:gap-20 ${fadeUp} ${row3.visible ? fadeIn : ""}`}
+          className={`grid items-center gap-8 sm:gap-12 md:grid-cols-2 md:gap-20 ${fadeUp} ${row3.visible ? fadeIn : ""}`}
         >
           <div>
             <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground">
               Nossa Missão
             </p>
-            <h3 className="mt-4 font-playfair-display text-3xl font-light leading-snug md:text-4xl">
-              Autenticidade em <br /> cada refeição
+            <h3 className="mt-3 sm:mt-4 font-playfair-display text-2xl sm:text-3xl md:text-4xl font-light leading-snug">
+              Autenticidade em <br className="hidden sm:block" /> cada refeição
             </h3>
-            <div className="mt-6 h-px w-10 bg-accent" />
-            <p className="mt-6 text-sm leading-[1.9] text-muted-foreground">
+            <div className="mt-4 sm:mt-6 h-px w-10 bg-accent" />
+            <p className="mt-4 sm:mt-6 text-sm leading-[1.9] text-muted-foreground">
               Oferecer uma experiência que celebra a autenticidade e a riqueza
               de sabores, com ingredientes frescos e comida de verdade —
               tornando cada refeição uma oportunidade para criar memórias
@@ -147,12 +147,12 @@ const About = () => {
           </div>
 
           <div className="relative">
-            <div className="absolute -inset-3 border border-accent/20 rounded-sm pointer-events-none" />
+            <div className="absolute -inset-3 border border-accent/20 rounded-sm pointer-events-none hidden sm:block" />
             <div className="overflow-hidden rounded-sm">
               <img
                 src={mesaImg}
                 alt="Mesa posta no restaurante Benvenuto"
-                className="h-[460px] w-full object-cover transition-transform duration-700 hover:scale-[1.04]"
+                className="h-[280px] sm:h-[360px] md:h-[460px] w-full object-cover transition-transform duration-700 hover:scale-[1.04]"
                 loading="lazy"
               />
             </div>
