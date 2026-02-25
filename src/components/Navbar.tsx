@@ -11,6 +11,7 @@ const navLinks = [
   { id: "eventos", label: "Eventos" },
   { id: "galeria", label: "Galeria" },
   { id: "cardapio", label: "Cardápio" },
+  { id: "contato", label: "Contato" },
 ];
 
 // ====== HORÁRIOS ======
@@ -82,21 +83,33 @@ const Navbar = ({ setAbaAtiva, abaAtiva }: NavbarProps) => {
     document.body.style.overflow = menuOpen ? "hidden" : "";
     return () => { document.body.style.overflow = ""; };
   }, [menuOpen]);
-
   const handleNav = (id: string) => {
-    setAbaAtiva(id);
     setMenuOpen(false);
+
+    if (id === "contato") {
+      // garante que estamos na home
+      setAbaAtiva("home");
+
+      // espera a home renderizar
+      setTimeout(() => {
+        const section = document.getElementById("contato");
+        section?.scrollIntoView({ behavior: "smooth" });
+      }, 50);
+
+      return;
+    }
+
+    setAbaAtiva(id);
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   return (
     <>
       <nav
-        className={`fixed left-0 right-0 top-0 z-40 transition-all duration-300 ${
-          scrolled
-            ? "bg-background/95 shadow-sm backdrop-blur-md py-2 sm:py-3"
-            : "bg-background/80 backdrop-blur-sm py-3 sm:py-4"
-        }`}
+        className={`fixed left-0 right-0 top-0 z-40 transition-all duration-300 ${scrolled
+          ? "bg-background/95 shadow-sm backdrop-blur-md py-2 sm:py-3"
+          : "bg-background/80 backdrop-blur-sm py-3 sm:py-4"
+          }`}
       >
         <div className="mx-auto flex max-w-6xl items-center justify-between px-4 sm:px-6">
           {/* Logo + Status */}
@@ -111,9 +124,8 @@ const Navbar = ({ setAbaAtiva, abaAtiva }: NavbarProps) => {
             <span className="opacity-50 hidden xs:inline">·</span>
 
             <span
-              className={`font-serif-display text-xs sm:text-sm md:text-xl font-light truncate ${
-                status.aberto ? "text-green-600" : "text-red-600"
-              }`}
+              className={`font-serif-display text-xs sm:text-sm md:text-xl font-light truncate ${status.aberto ? "text-green-600" : "text-red-600"
+                }`}
             >
               {status.texto}
             </span>
@@ -125,11 +137,10 @@ const Navbar = ({ setAbaAtiva, abaAtiva }: NavbarProps) => {
               <button
                 key={link.id}
                 onClick={() => handleNav(link.id)}
-                className={`relative text-xs uppercase tracking-[0.2em] ${
-                  abaAtiva === link.id
-                    ? "text-foreground"
-                    : "text-muted-foreground hover:text-foreground"
-                }`}
+                className={`relative text-xs uppercase tracking-[0.2em] ${abaAtiva === link.id
+                  ? "text-foreground"
+                  : "text-muted-foreground hover:text-foreground"
+                  }`}
               >
                 {link.label}
                 {abaAtiva === link.id && (
@@ -165,9 +176,8 @@ const Navbar = ({ setAbaAtiva, abaAtiva }: NavbarProps) => {
             {/* Status */}
             <div className="px-6 pb-4 border-b border-border">
               <span
-                className={`text-sm font-serif-display ${
-                  status.aberto ? "text-green-600" : "text-red-600"
-                }`}
+                className={`text-sm font-serif-display ${status.aberto ? "text-green-600" : "text-red-600"
+                  }`}
               >
                 {status.texto}
               </span>
@@ -179,11 +189,10 @@ const Navbar = ({ setAbaAtiva, abaAtiva }: NavbarProps) => {
                 <button
                   key={link.id}
                   onClick={() => handleNav(link.id)}
-                  className={`px-6 py-4 text-left text-sm uppercase tracking-[0.2em] transition-colors ${
-                    abaAtiva === link.id
-                      ? "text-foreground bg-secondary/50 border-l-2 border-accent"
-                      : "text-muted-foreground hover:text-foreground hover:bg-secondary/30"
-                  }`}
+                  className={`px-6 py-4 text-left text-sm uppercase tracking-[0.2em] transition-colors ${abaAtiva === link.id
+                    ? "text-foreground bg-secondary/50 border-l-2 border-accent"
+                    : "text-muted-foreground hover:text-foreground hover:bg-secondary/30"
+                    }`}
                 >
                   {link.label}
                 </button>

@@ -16,7 +16,10 @@ function NavControl() {
                 <Hero />
                 <About />
                 <Menu />
-                <Contact />
+
+                <section id="contato">
+                    <Contact />
+                </section>
             </div>
 
             <div className={abaAtiva === "eventos" ? "block pt-24" : "hidden"}>
@@ -29,10 +32,6 @@ function NavControl() {
 
             <div className={abaAtiva === "cardapio" ? "block pt-24" : "hidden"}>
                 <Menu />
-            </div>
-
-            <div className={abaAtiva === "contato" ? "block pt-24" : "hidden"}>
-                <Contact />
             </div>
         </>
     );

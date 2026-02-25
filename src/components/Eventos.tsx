@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import eventosImg from "@/assets/eventos-1.png";
 import restauranteImg from "@/assets/benvenuto-restaurante.jpg";
 import mesaImg from "@/assets/mesa-1.jpg";
+import eventospdf from "@/eventospdf/apresentação eventos emocional.pdf";
 
 const fadeUp = "opacity-0 translate-y-8 transition-all duration-700 ease-out";
 const fadeIn = "opacity-100 translate-y-0";
@@ -23,16 +24,51 @@ function useInView(threshold = 0.15) {
 }
 
 const tiposEvento = [
-  { icon: "💍", titulo: "Aniversários", descricao: "Celebramos junto com você com uma proposta única, cheia de afeto, vinho e momentos que ficam na memória." },
-  { icon: "👨‍👩‍👧‍👦", titulo: "Reuniões de Família", descricao: "Para os casos que sonham com um dia inesquecível, o Benvenuto está pronto para transformar cada reunião em uma experiência única." },
-  { icon: "🎊", titulo: "Celebrações Especiais", descricao: "Formaturas, noivados, conquistas ou qualquer motivo para brindar. Cada celebração merece atenção, cuidado e afeto." },
-  { icon: "🍷", titulo: "Confraternizações", descricao: "Para os casos que sonham com um dia inesquecível. Cuidamos de cada detalhe para que o grande dia seja repleto de sabor, elegância e emoção." },
+  {
+    icon: "💍",
+    titulo: "Casamentos",
+    descricao:
+      "Para os casais que sonham com um dia inesquecível, o Benvenuto oferece o cenário perfeito. Cuidamos de cada detalhe para que o grande dia seja repleto de sabor, elegância e emoção, do primeiro brinde ao último sorriso."
+  },
+  {
+    icon: "🎂",
+    titulo: "Aniversário",
+    descricao:
+      "Celebrar a vida é um prazer que levamos a sério. Aqui, cada aniversário ganha um toque especial, com pratos preparados com afeto, vinhos selecionados e um clima acolhedor."
+  },
+  {
+    icon: "👨‍👩‍👧‍👦",
+    titulo: "Reuniões de Família",
+    descricao:
+      "O Benvenuto é o cenário ideal para encontros de quem gosta de estar junto, em um ambiente acolhedor pensado para criar memórias felizes."
+  },
+  {
+    icon: "🎊",
+    titulo: "Celebrações Especiais",
+    descricao:
+      "Formaturas, noivados, conquistas ou qualquer motivo para brindar. Cada celebração recebe atenção, cuidado e afeto, porque acreditamos que todo momento especial merece ser vivido de forma única."
+  },
 ];
 
 const diferenciais = [
-  { titulo: "Menu Personalizado", descricao: "Cada menu é pensado de acordo com o seu momento especial. Adaptamos pratos, estilos e harmonizações para que cada preferência reflita seus gostos, sua história e o clima da celebração.", img: restauranteImg },
-  { titulo: "Ambiente Privativo", descricao: "Oferecemos espaços reservados para quem busca mais intimidade e conforto. Um ambiente exclusivo e cuidadosamente escolhido, perfeito para viver o momento com quem realmente importa.", img: mesaImg },
-  { titulo: "Liberdade na Decoração", descricao: "Aqui, a celebração tem a sua assinatura. Damos liberdade para que a decoração traduz exatamente o que você sente, criando um ambiente com seu sentido para você e para o seu evento.", img: eventosImg },
+  {
+    titulo: "Menu Personalizado",
+    descricao:
+      "Cada celebração recebe atenção, cuidado e afeto. Adaptamos os detalhes para que cada experiência seja única, respeitando o momento, os sabores e o clima da ocasião.",
+    img: restauranteImg
+  },
+  {
+    titulo: "Ambiente Acolhedor",
+    descricao:
+      "Um espaço pensado para receber bem. Nosso ambiente convida a ficar, conversar e aproveitar cada momento com conforto, elegância e hospitalidade.",
+    img: mesaImg
+  },
+  {
+    titulo: "Experiências que Ficam",
+    descricao:
+      "Mais do que um restaurante, somos um espaço para celebrar histórias, criar memórias e brindar momentos que ficam.",
+    img: eventosImg
+  },
 ];
 
 const Eventos = () => {
@@ -198,20 +234,33 @@ const Eventos = () => {
           <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground">
             Vamos celebrar juntos
           </p>
+
           <h2 className="mt-3 sm:mt-4 font-playfair-display text-3xl sm:text-4xl md:text-5xl font-light leading-snug">
             Transforme seu evento em uma memória inesquecível
           </h2>
+
           <p className="mt-4 sm:mt-6 text-sm leading-[1.9] text-muted-foreground">
             Entre em contato conosco e conte sua história. Vamos criar juntos uma experiência que valorize cada detalhe da sua celebração.
           </p>
-          <a
-            href="https://wa.me/5554996743601"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mt-6 sm:mt-8 inline-flex items-center gap-2 rounded-full bg-foreground px-6 sm:px-8 py-3 sm:py-3.5 text-[10px] sm:text-xs uppercase tracking-[0.2em] text-background transition-opacity hover:opacity-80"
-          >
-            Fale Conosco
-          </a>
+
+          <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
+            <a
+              href="https://wa.me/5554996743601"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-full bg-foreground px-6 sm:px-8 py-3 sm:py-3.5 text-[10px] sm:text-xs uppercase tracking-[0.2em] text-background transition-opacity hover:opacity-80"
+            >
+              Fale Conosco
+            </a>
+
+            <a
+              href={eventospdf}
+              download
+              className="inline-flex items-center gap-2 rounded-full border border-foreground px-6 sm:px-8 py-3 sm:py-3.5 text-[10px] sm:text-xs uppercase tracking-[0.2em] text-foreground transition-opacity hover:opacity-70"
+            >
+              Baixar PDF de Eventos
+            </a>
+          </div>
         </div>
       </section>
 
