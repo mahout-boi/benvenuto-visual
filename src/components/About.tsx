@@ -1,8 +1,8 @@
 import { useInView } from "@/hooks/use-in-view";
 import { FADE_UP, FADE_IN } from "@/lib/constants";
-import aboutImg from "@/assets/benvenuto-restaurante.jpg";
 import pratoImg from "@/assets/prato-1.jpg";
 import mesaImg from "@/assets/mesa-1.jpg";
+import nonoBenvenuto from "@/assets/nono-benvenuto.jpg";
 
 const rows = [
   {
@@ -12,7 +12,7 @@ const rows = [
       "A história do Benvenuto nasce do legado do nonno Benvenuto, um descendente de italianos que amava reunir pessoas em torno de boa comida e vinho. Inspirados por suas memórias e pelas tabacarias italianas, os fundadores criaram em 2014 a Tabacaria Benvenuto — um espaço acolhedor onde a comida tem alma.",
       "Após um rebranding, passou a se chamar apenas Benvenuto, reforçando sua essência como restaurante. Hoje, com sua própria linha de vinhos e estrutura moderna, o Benvenuto segue evoluindo sem perder o espírito de hospitalidade e afeto herdado do seu nonno.",
     ],
-    img: aboutImg,
+    img: nonoBenvenuto,
     alt: "Ambiente do restaurante Benvenuto",
     imgFirst: false,
   },
