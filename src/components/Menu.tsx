@@ -72,8 +72,14 @@ const Menu = () => {
           </div>
 
           <div ref={body.ref} className={`mt-12 transition-all duration-700 delay-150 ${body.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
-            <div className="relative overflow-hidden rounded-sm shadow-lg" onTouchStart={onTouchStart} onTouchEnd={onTouchEnd}>
+            <div className="group relative overflow-hidden rounded-sm shadow-lg" onTouchStart={onTouchStart} onTouchEnd={onTouchEnd}>
               <img src={imagensMenu[activeIndex]} alt={`Cardápio página ${activeIndex + 1}`} onClick={() => setFullscreen(true)} className="mx-auto max-h-[70vh] w-full cursor-zoom-in object-contain" />
+              <button onClick={prev} aria-label="Página anterior" className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-full border border-border/50 bg-background/80 text-foreground/70 opacity-0 backdrop-blur-sm transition-all duration-300 group-hover:opacity-100 hover:bg-accent hover:text-accent-foreground focus:opacity-100">
+                <ChevronLeft size={18} />
+              </button>
+              <button onClick={next} aria-label="Próxima página" className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-full border border-border/50 bg-background/80 text-foreground/70 opacity-0 backdrop-blur-sm transition-all duration-300 group-hover:opacity-100 hover:bg-accent hover:text-accent-foreground focus:opacity-100">
+                <ChevronRight size={18} />
+              </button>
             </div>
 
             <div className="mt-5 flex justify-center gap-2 overflow-x-auto">
