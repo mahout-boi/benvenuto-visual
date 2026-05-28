@@ -1,6 +1,6 @@
 import { MessageCircle } from "lucide-react";
 import { WHATSAPP_URL } from "@/lib/constants";
-import heroImg from "@/assets/hero-restaurant.jpg";
+import heroImg from "@/assets/optimized/hero-restaurant.webp";
 
 const Hero = () => (
   <section id="home" className="relative h-[100svh] w-full overflow-hidden">

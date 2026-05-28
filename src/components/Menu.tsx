@@ -2,12 +2,12 @@ import { useEffect, useRef, useState } from "react";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
 import { useInView } from "@/hooks/use-in-view";
 
-import menu1 from "@/cardapio/menu-1.jpg";
-import menu2 from "@/cardapio/menu-2.jpg";
-import menu3 from "@/cardapio/menu-3.jpg";
-import menu4 from "@/cardapio/menu-4.jpg";
-import menu5 from "@/cardapio/menu-5.jpg";
-import menu6 from "@/cardapio/menu-6.jpg";
+import menu1 from "@/cardapio/optimized/menu-1.webp";
+import menu2 from "@/cardapio/optimized/menu-2.webp";
+import menu3 from "@/cardapio/optimized/menu-3.webp";
+import menu4 from "@/cardapio/optimized/menu-4.webp";
+import menu5 from "@/cardapio/optimized/menu-5.webp";
+import menu6 from "@/cardapio/optimized/menu-6.webp";
 import cardapiopd from "@/cardapiopdf/Menu Benvenuto 2026_Compressed.pdf";
 
 const imagensMenu = [menu1, menu2, menu3, menu4, menu5, menu6];

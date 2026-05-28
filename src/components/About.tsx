@@ -1,8 +1,8 @@
 import { useInView } from "@/hooks/use-in-view";
 import { FADE_UP, FADE_IN } from "@/lib/constants";
-import pratoImg from "@/assets/prato-1.jpg";
-import mesaImg from "@/assets/mesa-1.jpg";
-import nonoBenvenuto from "@/assets/nono-benvenuto.jpg";
+import pratoImg from "@/assets/optimized/prato-1.webp";
+import mesaImg from "@/assets/optimized/mesa-1.webp";
+import nonoBenvenuto from "@/assets/optimized/nono-benvenuto.webp";
 
 const rows = [
   {

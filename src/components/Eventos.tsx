@@ -1,8 +1,8 @@
 import { useInView } from "@/hooks/use-in-view";
 import { FADE_UP, FADE_IN, WHATSAPP_URL } from "@/lib/constants";
-import eventosImg from "@/assets/eventos-1.png";
-import restauranteImg from "@/assets/benvenuto-restaurante.jpg";
-import mesaImg from "@/assets/mesa-1.jpg";
+import eventosImg from "@/assets/optimized/eventos-1.webp";
+import restauranteImg from "@/assets/optimized/benvenuto-restaurante.webp";
+import mesaImg from "@/assets/optimized/mesa-1.webp";
 import eventospdf from "@/eventospdf/apresentação eventos emocional.pdf";
 
 const tiposEvento = [

@@ -2,10 +2,10 @@ import { useEffect, useState } from "react";
 import { X } from "lucide-react";
 import { useInView } from "@/hooks/use-in-view";
 
-import prato1 from "@/assets/prato-1.jpg";
-import mesa1 from "@/assets/mesa-1.jpg";
-import restaurante from "@/assets/benvenuto-restaurante.jpg";
-import eventos1 from "@/assets/eventos-1.png";
+import prato1 from "@/assets/optimized/prato-1.webp";
+import mesa1 from "@/assets/optimized/mesa-1.webp";
+import restaurante from "@/assets/optimized/benvenuto-restaurante.webp";
+import eventos1 from "@/assets/optimized/eventos-1.webp";
 
 const images = [
   { src: prato1, label: "Prato da Casa" },
